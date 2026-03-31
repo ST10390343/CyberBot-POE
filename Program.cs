@@ -38,7 +38,7 @@ namespace POE
             Console.WriteLine(asciiArt);
             Console.ResetColor();
 
-            // Typing effect for loading message
+            // Typing effect for the loading message
             string loadingMessage = "Preparing your personalised experience...";
             foreach (char c in loadingMessage)
             {
@@ -47,7 +47,7 @@ namespace POE
             }
             Console.WriteLine();
 
-            // Pause for 1.5 seconds before name prompt
+            // Pause for 1.5 seconds before the name is prompted
             Thread.Sleep(1000);
 
             // Ask for user's name
