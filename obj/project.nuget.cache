@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "igh5+eTaqAQ=",
+  "dgSpecHash": "8qJ5FNI3YCU=",
   "success": true,
   "projectFilePath": "C:\\Users\\lab_services_student\\source\\repos\\POE\\POE\\POE.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\lab_services_student\\.nuget\\packages\\system.windows.extensions\\10.0.5\\system.windows.extensions.10.0.5.nupkg.sha512"
+  ],
   "logs": []
 }
