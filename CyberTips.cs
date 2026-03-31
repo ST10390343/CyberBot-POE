@@ -8,6 +8,7 @@ namespace POE
 
         public static bool ProvideCyberTip(string userInput, string userName)
         {
+            // Method to provide cybersecurity tips based on user input
             if (userInput.Contains("password"))
             {
                 string[] passwordTips = {
