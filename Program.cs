@@ -8,60 +8,49 @@ namespace POE
     {
         static void Main(string[] args)
         {
-            // Chatbot Welcome voice greeting
-            SoundPlayer player = new SoundPlayer(@"C:\Users\lab_services_student\source\repos\POE\POE\Media\Welcome.wav");
-            player.Play();
+            // Chatbot welcome voice greeting
+            try
+            {
+                SoundPlayer player = new SoundPlayer(@"C:\Users\lab_services_student\source\repos\POE\POE\Media\Welcome.wav");
+                player.Play();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("The Audio failed to play: " + ex.Message);
+                Console.ResetColor();
+            }
 
-            Console.WriteLine("Welcome to the Phodzo Cybersecurity Awareness Bot!");
-
-            // ASCII Art logo design
-            Console.ForegroundColor = ConsoleColor.Blue;
-            string asciiArt = @"
-=================================================================
- PHODZO SECURITY BOT v1.5
-=================================================================
-
- > Initializing security awareness system...
- > Status: ACTIVE
-        ____
-    __  /  \  __
- _(\    |@@|
-(__/\__ \--/ __
-   \___|----|  |   __
-       \ }{ /\ )_ / _\
-       /\__/\ \__O (__
-      (--/\--)    \__/
-      _)(  )(_
-     `---''---`
-=================================================================
-";
-            Console.WriteLine(asciiArt);
-            Console.ResetColor();
+            // ASCII Art logo display
+            CyberBotUI.DisplayAsciiArt();
 
             // Typing effect for the loading message
-            string loadingMessage = "Preparing your personalised experience...";
-            foreach (char c in loadingMessage)
-            {
-                Console.Write(c);
-                Thread.Sleep(100); 
-            }
-            Console.WriteLine();
+            CyberBotUI.DisplayTypedMessage("Preparing your personalised experience...");
 
-            // Pause for 1.5 seconds before the name is prompted
             Thread.Sleep(1000);
 
             // Ask for user's name
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("Please enter your name: ");
             Console.ResetColor();
+        
+            string userName;
 
-            string userName = Console.ReadLine();
+            // Handle empty or invalid input
+            while (true)
+            {
+                string input = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(input))
+                {
+                    userName = StringFormatter.CapitalizeName(input);
+                    break;
+                }
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("Incorrect entry. Kindly type your name: ");
+                Console.ResetColor();
+            }
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Hello {userName}, welcome to the Cybersecurity Awareness Bot!");
-            Console.ResetColor();
-
-            // Pass the name into the chatbot loop
+            // Pass userName along so the bot can personalize responses
             UserInput.RunChatbot(userName);
         }
     }
