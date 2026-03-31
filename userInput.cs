@@ -4,30 +4,80 @@ namespace POE
 {
     internal class UserInput
     {
-        public static void RunChatbot()
+        public static void RunChatbot(string userName)
         {
-            Console.Write("Please enter your name: ");
-            string userName = Console.ReadLine();
-
-            Console.WriteLine($"Hello {userName}, let’s talk about staying safe online.");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"\nHello {userName}, you may kindly ask me anything regarding cybersecurity or just chat with me!");
+            Console.ResetColor();
 
             while (true)
             {
-                Console.WriteLine("\nChoose a topic: (1) Passwords (2) Phishing (3) Exit");
-                string choice = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("\nYou: ");
+                Console.ResetColor();
 
-                if (choice == "1")
-                    Console.WriteLine(StringManipulation.FormatTip("Use at least 12 characters, mix letters, numbers, and symbols."));
-                else if (choice == "2")
-                    Console.WriteLine(StringManipulation.FormatTip("Never click suspicious links or attachments in emails."));
-                else if (choice == "3")
+                string userInput = Console.ReadLine()?.ToLower();
+
+                if (string.IsNullOrWhiteSpace(userInput))
                 {
-                    Console.WriteLine("Goodbye! Stay safe online.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Bot: Please type something.");
+                    Console.ResetColor();
+                    continue;
+                }
+
+                if (userInput == "exit")
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Bot: Goodbye {userName}! Stay safe online.");
+                    Console.ResetColor();
                     break;
                 }
+                else if (userInput.Contains("how are you"))
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Bot: I'm functioning perfectly, thanks for asking!");
+                    Console.ResetColor();
+                }
+                else if (userInput.Contains("purpose"))
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Bot: My purpose is to teach you about cybersecurity awareness.");
+                    Console.ResetColor();
+                }
+                else if (userInput.Contains("what can i ask"))
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Bot: You can ask me about password safety, phishing, or safe browsing tips.");
+                    Console.ResetColor();
+                }
+                else if (userInput.Contains("password"))
+                {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("Bot: Use long, complex passwords with numbers, symbols, and uppercase letters.");
+                    Console.ResetColor();
+                }
+                else if (userInput.Contains("phishing"))
+                {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("Bot: Be cautious of emails with suspicious links or attachments.");
+                    Console.ResetColor();
+                }
+                else if (userInput.Contains("safe browsing"))
+                {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("Bot: Always keep your browser updated and avoid unsafe websites.");
+                    Console.ResetColor();
+                }
                 else
-                    Console.WriteLine("Invalid choice, try again.");
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine($"Bot: Sorry {userName}, I don’t understand that. Try asking about passwords, phishing, or safe browsing.");
+                    Console.ResetColor();
+                }
             }
         }
     }
 }
+
+
