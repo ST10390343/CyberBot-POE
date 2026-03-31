@@ -8,8 +8,9 @@ namespace POE
         public static void ReplyUnknown(string userInput, string userName)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"\n[Bot]:I didn't fully comprehend that, {userName}. Could you clarify or request information about safe browsing, phishing, or passwords?");
+            Console.WriteLine($"\n[Bot]: {userName}, I'm here to provide you with the best advice I can. Would you like advice on safe passwords, phishing, or secure browsing, or could you elaborate more on your question?");
             Console.ResetColor();
         }
     }
 }
+

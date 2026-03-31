@@ -12,17 +12,17 @@ namespace POE
 
             if (userInput.Contains("how are you"))
             {
-                DisplayBotMessage("I'm functioning perfectly, thanks for asking!");
+                DisplayBotMessage($"All systems are active, {userName}! I'm honored to share with you some cybersecurity guidance. Would you like to learn more about safe browsing, phishing, or passwords?");
                 return true;
             }
             else if (userInput.Contains("purpose"))
             {
-                DisplayBotMessage("My purpose is to teach you about cybersecurity awareness.");
+                DisplayBotMessage($"{userName}, my purpose is to teach you about cybersecurity awareness and help you stay safe online.");
                 return true;
             }
             else if (userInput.Contains("what can i ask"))
             {
-                DisplayBotMessage("You can ask me about password safety, phishing, or safe browsing tips.");
+                DisplayBotMessage($"{userName},I can help you with three important areas: establishing safe passwords, identifying phishing efforts, and engaging in safe browsing. Which one do you want to investigate first?");
                 return true;
             }
 

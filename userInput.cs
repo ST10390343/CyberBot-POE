@@ -7,7 +7,7 @@ namespace POE
     {
         public static void RunChatbot(string userName)
         {
-            // Friendly welcome with divider lines
+            // A Friendly warm welcome with divider lines for better readability
             CyberBotUI.DisplayDivider();
             Console.WriteLine($" Hello {userName}, welcome to the Cybersecurity Awareness Bot!");
             CyberBotUI.DisplayDivider();
@@ -23,30 +23,32 @@ namespace POE
                 // Input validation
                 if (string.IsNullOrWhiteSpace(userInput))
                 {
-                    DefaultResponse.ReplyUnknown(userInput, userName); // fixed
+                    DefaultResponse.ReplyUnknown(userInput, userName); 
                     continue;
                 }
 
-                // Normalize input using StringFormatter
+                
                 userInput = StringFormatter.NormalizeInput(userInput);
 
-                // Check for exit command
+                
                 if (userInput == "exit")
                 {
                     ExitChat(userName);
                     break;
                 }
-                // Handle small talk responses
+                
                 else if (ResponseHandler.Respond(userInput, userName)) { }
-                // Handle cybersecurity tips
-                else if (CyberTips.ProvideCyberTip(userInput)) { } // fixed
-                // Handle unknown inputs
+                
+                else if (CyberTips.ProvideCyberTip(userInput, userName)) { }
+
+
                 else
                 {
-                    DefaultResponse.ReplyUnknown(userInput, userName); // fixed
+                    DefaultResponse.ReplyUnknown(userInput, userName); 
                 }
 
-                Thread.Sleep(400); // slight pause for readability
+                // helps with pausing for better ui experience
+                Thread.Sleep(400); 
             }
         }
 
@@ -57,6 +59,20 @@ namespace POE
             Console.WriteLine("\n============================================");
             Console.WriteLine($"[Bot]: Goodbye {userName}! Stay safe online.");
             Console.WriteLine("============================================");
+            Console.ResetColor();
+        }
+
+              // Help method
+        private static void DisplayHelp(string userName)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"\n[Bot]: {userName}, here are some things you can ask me about:");
+            Console.WriteLine(" • Password safety");
+            Console.WriteLine(" • Phishing awareness");
+            Console.WriteLine(" • Safe browsing practices");
+            Console.WriteLine(" • Updating software regularly");
+            Console.WriteLine(" • Using two-factor authentication (2FA)");
+            Console.WriteLine("You can also type 'exit' anytime to leave the chat.");
             Console.ResetColor();
         }
     }
