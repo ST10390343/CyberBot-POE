@@ -38,6 +38,9 @@ At first it failed because I missed a dependency, but after fixing it the workfl
 It still shows me an error even though it runs, so I’m working on figuring that out.  
 This setup helps me make sure my code compiles before I submit.
 
+<img width="1495" height="721" alt="image" src="https://github.com/user-attachments/assets/ccba8a5c-6327-42bb-84ce-2790c66d80f5" />
+
+
 ---
 
 ## References
